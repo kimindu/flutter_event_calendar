@@ -5,7 +5,9 @@ import 'package:flutter_event_calendar/src/handlers/EventCalendar.dart';
 
 class Translator {
   List getMonthNames() {
-    return fullMonthNames[EventCalendar.type];
+    var xtype=(EventCalendar.locale!='fa' && EventCalendar.locale!='en') ? EventCalendar.locale:  EventCalendar.type;
+
+    return fullMonthNames[xtype];
   }
 
   String getPartTranslate(format, index) {
@@ -18,21 +20,24 @@ class Translator {
   }
 
   String getWeekDayNameWithIndex(index) {
+    var xtype=(EventCalendar.locale!='fa' && EventCalendar.locale!='en') ? EventCalendar.locale:  EventCalendar.type;
+
     switch (EventCalendar.headerWeekDayStringType) {
       case 'full':
-        return fullDayNames[EventCalendar.type][index];
+        return fullDayNames[xtype][index];
       case 'short':
-        return shortDayNames[EventCalendar.type][index];
+        return shortDayNames[xtype][index];
     }
   }
 
   String getMonthNameWithIndex(index) {
+    var xtype=(EventCalendar.locale!='fa' && EventCalendar.locale!='en') ? EventCalendar.locale:  EventCalendar.type;
     switch (EventCalendar.headerMonthStringType) {
       case 'full':
-        return fullMonthNames[EventCalendar.type][index];
+        return fullMonthNames[xtype][index];
 
       case 'short':
-        return shortMonthNames[EventCalendar.type][index];
+        return shortMonthNames[xtype][index];
     }
   }
 
@@ -42,6 +47,8 @@ class Translator {
         return fa[word];
       case 'en':
         return en[word];
+      case 'kr':
+        return kr[word];
     }
   }
 }
