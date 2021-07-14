@@ -53,6 +53,7 @@ class EventCalendar extends StatefulWidget {
     eventDescriptionColor,
     eventDateTimeColor,
     isRTL,
+    locale,
   }) {
     EventCalendar.type = type ?? 'gregorian';
     EventCalendar.events = events ?? [];
@@ -91,7 +92,13 @@ class EventCalendar extends StatefulWidget {
     else
       EventCalendar.isRTL = EventCalendar.type == 'jalali' ? true : false;
 
-    EventCalendar.locale = EventCalendar.type == 'jalali' ? 'fa' : 'en';
+    if(locale!=null) {
+      EventCalendar.locale = locale;
+    }else{
+
+      EventCalendar.locale = EventCalendar.type == 'jalali' ? 'fa' : 'en';
+    }
+
   }
 
   @override
